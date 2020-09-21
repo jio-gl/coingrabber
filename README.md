@@ -1,6 +1,10 @@
 # coingrabber
 
+## Introduction
+
 Modern Portfolio Theory (Markowitz) creation and backtesting for Cryptocurrencies (Less Risky, Most Profitable, etc.)
+
+## Usage
 
 * Download currency data:
   * choose list of coins in `coins.py`, select coin set where it says
@@ -21,4 +25,6 @@ Modern Portfolio Theory (Markowitz) creation and backtesting for Cryptocurrencie
   * options, inside the file change flag `MAXIMIZE_SHARPE = True` (or `False` for a Minimum Risk portfolio)
                 (result also in `logpfolio.txt`)
   * also if `TARGET_RETURN` is not `None`, then try to minimize the risk for that return.
+
+## Example output
 
