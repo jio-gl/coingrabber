@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Modern Portfolio Theory (Markowitz) creation and backtesting for Cryptocurrencies (Less Risky, Most Profitable, etc.)
+Modern Portfolio Theory (Markowitz) creation and backtesting for Cryptocurrencies (Minimum Risk portfolio, Most Profitable portfolio, etc.)
 
 ## Usage
 
