@@ -13,14 +13,10 @@ import re
 import os
 import random
 
-# mecha
 import sys
 import os
 import re
 from urllib2 import HTTPError
-#import mechanize
-#assert mechanize.__version__ >= (0, 0, 6, "a")
-# end mecha
 
 from coins import CoinDB
 
@@ -232,19 +228,6 @@ def updateSinceLastPrice(coin,browser):
 
 def updateLastTickers(updateLastDays=True,downloadMissing=True):
     coins = CoinDB()
-    
-    # browser
-    browser = None
-    #browser = mechanize.Browser()
-    #browser.set_handle_robots(False)
-    # mech.set_debug_http(True)
-
-    # Get the starting page
-    try:
-        pass
-        #browser.open("https://coinmarketcap.com/")
-    except HTTPError, e:
-        sys.exit("%d: %s" % (e.code, e.msg))
     
     missingCoins = []
     for coin in coins.coins:

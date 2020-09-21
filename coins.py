@@ -1,7 +1,7 @@
 '''
 Created on Feb 27, 2017
 
-@author: joign
+@author: joigno
 '''
 
 import csv,pickle

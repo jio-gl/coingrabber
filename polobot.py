@@ -41,7 +41,7 @@ class PoloniexBot(object):
         '''
         Constructor
         '''
-        self.polo = Poloniex(Key='MGPN7DLB-DSXXIJ9M-89K0FQ7G-LAOPS955', Secret='f9a6ec39d118fad4f6aa26940404eae0354ca8054e59e9880adaef5ab193a902e164eb4ca271e4a632754971b90d2ff6ac96811946c3adbc990f7a4c5e79c7ae')
+        self.polo = Poloniex(Key='KEY', Secret='SECRET')
         
         
     def totalBTC(self):
@@ -202,5 +202,5 @@ if __name__ == '__main__':
     #polobot.marginBuyWeight(0.5, coin='CLAM')
     #polobot.marginSellWeight(0.5, coin='ETH')
     #polobot.marginPositionWeight(w=-0.75, coin='ETH')
-    
+ 
     pass

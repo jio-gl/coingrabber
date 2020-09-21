@@ -1,7 +1,7 @@
 '''
 Created on Mar 16, 2017
 
-@author: joign
+@author: joigno
 '''
 
 from cdf import phi as cdf

@@ -1,7 +1,7 @@
 '''
 Created on Jul 13, 2017
 
-@author: joign
+@author: joigno
 '''
 
 import csv,copy

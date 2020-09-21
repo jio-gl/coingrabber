@@ -1,7 +1,7 @@
 '''
 Created on Mar 9, 2017
 
-@author: joign
+@author: joigno
 '''
 
 from coins import CoinDB

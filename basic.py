@@ -1,7 +1,7 @@
 '''
 Created on Apr 18, 2017
 
-@author: joign
+@author: joigno
 '''
 
 from portfolio import PortfolioAnalyzer
