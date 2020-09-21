@@ -279,7 +279,7 @@ class CoinDB(object):
             }
 
     allCoins = list(set(coinSets['kraken'] + coinSets['poloniex'] + coinSets['bittrex']))
-    coins = coinSets['margin'] # list(set( coinSets['margin'] + coinSets['vip'] ))
+    coins = coinSets['cap'] # list(set( coinSets['margin'] + coinSets['vip'] ))
 
 
     stocks = [

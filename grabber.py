@@ -162,6 +162,8 @@ def pricesAll5minutes(coin, browser=None, lastPriceDate=None, isTemp=False):
         print 'daysBack',coins[0],daysBack
         r = (int(time.time()) + 60*60*24*(daysBack-1) + 60)*1000, (int(time.time()) + 60*60*24*daysBack + 60)*1000 
         #url = 'https://graphs.coinmarketcap.com/v1/datapoints/%s/%d/%d/' % (coins[0],r[0],r[1])
+        #TODO: use new URLs with a numberical id per coin ->
+        # https://web-api.coinmarketcap.com/v1.1/cryptocurrency/quotes/historical?convert=USD,BTC&format=chart_crypto_details&id=5567&interval=5m&time_end=1600647995&time_start=1597976659
         url = 'https://graphs.coinmarketcap.com/currencies/%s/%d/%d/' % (coins[0],r[0],r[1])
         print 'INFO: grabbing all prices (5 min periods) for %s ...' % coins[0]
         print url
@@ -236,7 +238,7 @@ def updateLastTickers(updateLastDays=True,downloadMissing=True):
         if lastPriceDate:
             if updateLastDays:
                 print coin,lastPriceDate
-                updateSinceLastPrice(coin,browser)
+                updateSinceLastPrice(coin,None)
         else:
             missingCoins.append( coin )
             
