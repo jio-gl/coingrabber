@@ -76,7 +76,61 @@ def coin_to_coin_number(coinname='morpheus'):
     coin_number = data.split('coins/200x200/')[1].split('.png')[0]
     return int(coin_number)
 
+def get_coins():
+    coins = [
+        'bitcoin',
+        'ethereum',
+        'solana',
+        'dogecoin',
+        'ripple',
+        'sui',
+        'celestia',
+        'chainlink',
+        'dogwifhat',
+        'aave',
+        'avalanche',
+        'arbitrum',
+        'uniswap',
+        'near-protocol',
+        'dydx',
+        'sei',
+        'aptos',
+        'toncoin',
+        'bnb',
+        'cardano',
+        'filecoin',
+        'cosmos',
+        'injective',
+        'bitcoin-cash',
+        'polkadot-new',
+        'litecoin',
+        'stellar',
+        'ethereum-classic',
+        'thorchain',
+        'internet-computer',
+        'algorand',
+        'eos',
+        'chiliz',
+        'gala',
+        'helium',
+        'kaspa',
+        'monero',
+        'multiversx-egld',
+        'theta-network',
+        'tezos',
+        ]
+    return coins
+
+def get_all_data():
+    coins = get_coins()
+    for coin in coins:
+        coinnumber = coin_to_coin_number(coin)
+        data = get_data(coinnumber, '1D')
+        prices = get_price(data)
+        times = get_time(data)
+        save_data(prices, times, coin)
+        time.sleep(0.25)
 
 
 if __name__ == '__main__':
-    main()
+    get_all_data()
