@@ -125,7 +125,7 @@ def get_all_data():
     coins = get_coins()
     for coin in coins:
         coinnumber = coin_to_coin_number(coin)
-        data = get_data(coinnumber, '1D')
+        data = get_data(coinnumber, '7D')
         prices = get_price(data)
         times = get_time(data)
         save_data(prices, times, coin)
