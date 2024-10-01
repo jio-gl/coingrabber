@@ -6,6 +6,7 @@
 #   data = get_data(coin_number=31656, range='1D')
 
 import csv
+from math import log
 import pandas as pd
 from numpy import sign, mean, var
 from scraper2024 import get_coins
@@ -135,14 +136,36 @@ def get_trend(coin):
     for i in range(len(flat_streak[0])-1):
         min_vec.append( min(flat_streak, key=lambda x: x[i])[i] )
         max_vec.append( max(flat_streak, key=lambda x: x[i])[i] )    
-    print ('min_vec ',min_vec)
-    print ('max_vec ', max_vec)
+    #print ('min_vec ',min_vec)
+    #print ('max_vec ', max_vec)
     return flat_streak, min_vec, max_vec
 
 def normalized_trend(coin):
 
     max_vec, min_vec = [], []
-    points = get_trend(coin)
+    points, min_vec, max_vec = get_trend(coin)
+
+    norm_points = []
+    for point in points:
+        norm_point = []
+        for i in range(len(point)-1):
+            if i == 4: # logaritmo normalized
+                try:
+                    norm_point.append(log(point[i]+1.0) / (log(max_vec[i]+1.0)) )
+                except:
+                    norm_point.append(0.0)
+            else:
+                norm_point.append((point[i] - min_vec[i]) / (max_vec[i] - min_vec[i]))
+        norm_point.append(point[-1])
+        norm_points.append(norm_point)
+        #print(norm_points[-1])
+
+    with open('data/norm_trend_%s.csv' % coin, 'w', newline='\n') as csvfile:
+        spamwriter = csv.writer(csvfile)
+        for norm_point in norm_points:
+            spamwriter.writerow(norm_point)
+
+    return norm_points, min_vec, max_vec
 
 
 if __name__ == '__main__':
@@ -172,3 +195,9 @@ if __name__ == '__main__':
     print('='*20)
     print('Max Convexity:', max_conv_coin, max_conv, max_conv_vector)
     print('Max Streak:', max_streak_coin, max_streak, max_streak_vector)
+
+    for coin in get_coins():
+
+        #print(coin.upper())
+        norm_points, min_vec, max_vec = normalized_trend(coin)
+        #print('-'*20)
