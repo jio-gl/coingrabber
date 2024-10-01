@@ -90,6 +90,7 @@ def filter_nan(returns):
 
 def get_trend(coin):
     #coin = 'ethereum'
+    min_vec, max_vec = [], []
     df = load_csv(coin)
     myreturns = get_returns(df)
     myreturns = filter_nan(myreturns)
@@ -102,6 +103,7 @@ def get_trend(coin):
     #    print(i,j)
 
     len_streak_points = reduce_streak_points(streak_point_trade, lambda x: [len(x)]) #/12])
+    len_streak_points2 = reduce_streak_points(streak_point_trade, lambda x: len(x)) #/12])
     mean_streak_points = reduce_streak_points(streak_point_trade, lambda x : abs(mean(x)))
     var_streak_points = reduce_streak_points(streak_point_trade, lambda x : var(x))
     direction_streak_points = reduce_streak_points(streak_point_trade, lambda x : sign(x[0]))#int((sign(x[0])+1)/2))
@@ -127,7 +129,20 @@ def get_trend(coin):
             flat_streak.append(streak+[point])
             spamwriter.writerow(streak+[point])
 
-    return flat_streak[-3:]
+    # min max
+    #for i in len_streak_points2:
+    #    print(i)
+    for i in range(len(flat_streak[0])-1):
+        min_vec.append( min(flat_streak, key=lambda x: x[i])[i] )
+        max_vec.append( max(flat_streak, key=lambda x: x[i])[i] )    
+    print ('min_vec ',min_vec)
+    print ('max_vec ', max_vec)
+    return flat_streak, min_vec, max_vec
+
+def normalized_trend(coin):
+
+    max_vec, min_vec = [], []
+    points = get_trend(coin)
 
 
 if __name__ == '__main__':
@@ -138,7 +153,8 @@ if __name__ == '__main__':
     max_streak = 0
     max_streak_vector = []
     for coin in get_coins():
-        last_five = get_trend(coin)
+        points, _ ,_ = get_trend(coin)
+        last_five = points[-3:]
         print(coin.upper())
         print('len_streak, direction, mean, var, convexity, convex_direction, next_candle')
         for streak in last_five:
