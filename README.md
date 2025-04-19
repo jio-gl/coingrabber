@@ -2,6 +2,9 @@
 
 A Python tool for analyzing cryptocurrency portfolios and tracking cryptocurrency prices.
 
+<img width="1149" alt="image" src="https://github.com/user-attachments/assets/b43e0098-16e6-4a98-b0ae-c6f575c0e31c" />
+
+
 ## Overview
 
 CoinGrabber is a Python-based tool that allows users to:
