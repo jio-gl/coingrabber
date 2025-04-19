@@ -4,6 +4,13 @@ A Python tool for analyzing cryptocurrency portfolios and tracking cryptocurrenc
 
 <img width="1149" alt="image" src="https://github.com/user-attachments/assets/b43e0098-16e6-4a98-b0ae-c6f575c0e31c" />
 
+## TLDR;
+
+```bash
+python download_data.py -i 1D # download data from CMC
+python portfolio_example.py   # analyze an example portfolio
+python optimization.py        # GUI choose coins  and optimize efficieny frontier
+```
 
 ## Overview
 
